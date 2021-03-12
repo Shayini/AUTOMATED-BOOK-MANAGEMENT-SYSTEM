@@ -1,0 +1,46 @@
+Install Arduino.
+
+(I have used Arduino UNO for Step 1,2,3 and changed to Arduino Mega for other steps...
+	When changing consider about the pins for RFID, LCD, and WIFI MODULE... Check the pin setup for these components)
+
+Step 1: Line Follower => ( https://www.youtube.com/watch?v=jsGG6-vXaXo )
+	- Connect the circuit as in the design1.png
+	- Adjust the sensors
+	
+Step 2: RFID + LCD => ( https://www.youtube.com/watch?v=IlrfSv6_AWw )
+	- Extract and Move the 'rfid-master' file in the 'Step 2 - RFID + LCD/Library' to 'C:\Program Files (x86)\Arduino\libraries'
+	- Connect the circuit as in the Design2_Using_ArduinoUNO.png
+	- Upload & Run the file 'rfid_write_book_data.ino' file in 'Step 2 - RFID + LCD/1 - rfid_write_book_data/rfid_write_book_data' to add data to the tag
+	- Upload & Run the file 'rfid_read_book_data.ino' file in 'Step 2 - RFID + LCD/2 - rfid_read_book_data/rfid_read_book_data' to read data from the tag
+	- Upload & Run the file 'rfid_delete_book_data.ino' file in 'Step 2 - RFID + LCD/3 - rfid_delete_book_data/rfid_delete_book_data' to delete data from the tag
+	- If every thing runs well finally,
+		=> Upload & Run the file 'RFID_Modify_Code_for_LCD.ino' file in 'Step 2 - RFID + LCD/4 - RFID_Modify_Code_for_LCD/RFID_Modify_Code_for_LCD'
+
+Step 3: Wi-Fi Module => (  )
+	- Connect the circuit as in the Design3_Using_ArduinoUNO.png
+	- sample AT commands to get wifi module IP address--------------------------------------------------------
+	- Change the 'WIFI_SSID' and 'PASSWORD' value as your wifi ssid and password
+	- If needed change the 'host' value as your computers IP address(for localhost)
+	- Change the 'book id' which you have to update the status of that book, in the place where the function is called
+	- In the java backend add the wifi module IP address in the @CrossOrigin raw in the BookController.java file as @CrossOrigin(origins = {"http://localhost:8081", "http://<wifi_module_IP_address>"})
+	- Upload & Run the java backend, MySQL Workbench and the 'Wi-Fi_Module.ino' file in the 'Step 3 - Wi-Fi Module/Wi-Fi_Module'
+	- Open the Serial Monitor in the Arduino IDE
+	- If every thing runs well, You can see that the perticular book details will be updated in the server
+	
+Step 4: RFID + Wi-Fi Module => (  )
+	- Combine the circuit in Step 2 & Step 3
+	- If every thing is connected well finally,
+		=> Upload & Run the file 'RFID_LCD_Modify_Code_for_Wi_Fi_Module.ino' file in 'Step 4 - RFID + LCD Modify Code for Wi-Fi Module\RFID_LCD_Modify_Code_for_Wi_Fi_Module'
+
+Step 5: Connecting with Line follower => (  )
+	- Combine the circuit in Step 1 & Step 4
+	- If every thing is connected well finally,
+		=> Upload & Run the file 'Connect_with_Line_follower.ino' file in 'Step 5 - Connecting with Line follower\Connect_with_Line_follower'
+
+Step 6: Shortest Path => (  )
+	- It is a code for finding shortest path using Dijkstra's algorithm
+	- Upload & Run the file 'Shortest_Path.ino' file in 'Step 6 - Shortest Path\Shortest_Path'
+
+Step 6: Line follower with Shortest Path => (  )
+	- (Combine the codes in Step 5 & Step 6)
+	- Upload & Run the file 'Line_follower_with_Shortest_Path.ino' file in 'Step 7 - Line follower with Shortest Path\Line_follower_with_Shortest_Path'
